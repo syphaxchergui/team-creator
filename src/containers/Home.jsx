@@ -45,16 +45,19 @@ const HomePage = () => {
           />
         </div>
 
-        <div className='mb-4'>
-          <span className='mr-2'>Nombre d'équipes:</span>
-          <input
-            type='number'
-            className='p-2 border rounded'
-            value={numberOfTeams}
-            onChange={(e) => actions.setNumberOfTeams(Number(e.target.value))}
-          />
+        <div className='mb-4 flex items-end justify-between'>
+          <div>
+            <p>Nombre d'équipes:</p>
+            <input
+              type='number'
+              className='p-2 border rounded w-16 mt-2'
+              value={numberOfTeams}
+              onChange={(e) => actions.setNumberOfTeams(Number(e.target.value))}
+            />
+          </div>
+
           <button
-            className='px-4 py-2 bg-green-500 text-white rounded mx-3'
+            className='px-4 py-2 bg-green-500 text-white rounded'
             onClick={() => actions.createRandomTeams()}>
             Shuffle
           </button>

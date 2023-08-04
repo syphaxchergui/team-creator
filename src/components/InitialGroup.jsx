@@ -42,7 +42,7 @@ const InitialGroup = ({ initialGroup, onRemove, onClearAll }) => {
           ))
         ) : (
           <div className='p-5  w-full border-2 border-dashed rounded border-purple-800 border-spacing-1 bg-purple-200'>
-            Add a person to start...
+            Ajouter une personne pour commencer...
           </div>
         )}
       </div>
