@@ -92,18 +92,19 @@ export const TeamsProvider = ({ children }) => {
   // Function to create random teams
   const createRandomTeams = () => {
     const { initialGroup, numberOfTeams } = state;
-
-    // Make a copy of the initialGroup and shuffle it randomly
+  
+    // Shuffle the initial group
     const shuffledGroup = shuffleArray([...initialGroup]);
-
-    // Calculate the size of each team
-    const teamSize = Math.ceil(shuffledGroup.length / numberOfTeams);
-
-    // Split the shuffledGroup into teams
-    const teams = Array.from({ length: numberOfTeams }, (_, index) =>
-      shuffledGroup.slice(index * teamSize, (index + 1) * teamSize)
-    );
-
+  
+    // Initialize empty teams
+    const teams = Array.from({ length: numberOfTeams }, () => []);
+  
+    // Distribute people to teams in round-robin fashion
+    shuffledGroup.forEach((person, index) => {
+      const teamIndex = index % numberOfTeams;
+      teams[teamIndex].push(person);
+    });
+  
     setState((prevState) => ({
       ...prevState,
       teams,
